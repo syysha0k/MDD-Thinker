@@ -68,11 +68,11 @@ MDD-Thinker leverages two main sources of data:
 
 The **reasoning dataset** is generated in three steps:
 
-1. **Feature Selection** – selecting 22 clinically and statistically relevant variables.
-2. **Data Filtering** – removing low-information or inconsistent samples, including LLM-assisted consistency checks.
-3. **Reasoning Path Construction** – creating structured step-by-step diagnostic explanations (symptom evidence → psychosocial context → diagnosis).
+1. **Feature Selection** – selecting 22 clinically and statistically relevant variables. ('feature_selection.py')
+2. **Data Filtering** – removing low-information or inconsistent samples, including LLM-assisted consistency checks. ('data_filter.py')
+3. **Reasoning Path Construction** – creating structured step-by-step diagnostic explanations (symptom evidence → psychosocial context → diagnosis). （'reasoning_generation.py'）
 
-*Data processing scripts are provided in [data/](./data) folder.*
+*Data processing scripts are provided in [data_process/](./data_process/) folder.*
 
 ---
 
