@@ -18,6 +18,41 @@ MDD-Thinker aims to provide a scalable and explainable solution for intelligent 
 
 ---
 
+## Main Results
+We conduct extensive experiments on UKBiobank cohort. The model performance was evaluated using the *Accuracy (Acc)*, *F1-Score (F1)*, *Area Under the Curve (AUC)*, *Specificity (SPE)*, *Sensitivity (SNE)*, *Positive Predictive Value (PPV)*, and *Negative Predictive Value (NPV)*. The results are shown as follows.
+
+| Method             | ACC    | F1     | AUC    | SPE    | SENS   | PPV    | NPV    |
+|-------------------|--------|--------|--------|--------|--------|--------|--------|
+| SVM               | 0.6794 | 0.6517 | 0.7463 | 0.6958 | 0.6596 | 0.6438 | 0.7106 |
+| RF                | 0.6883 | 0.6341 | 0.7369 | 0.7662 | 0.5947 | 0.6791 | 0.6943 |
+| LightGBM          | 0.7091 | 0.6707 | 0.7693 | 0.7572 | 0.6516 | 0.6908 | 0.7231 |
+| XGBoost           | 0.7068 | 0.6704 | 0.7497 | 0.7501 | 0.6554 | 0.6858 | 0.7233 |
+| CatBoost          | 0.7117 | 0.6717 | 0.7751 | 0.7642 | 0.6486 | 0.6961 | 0.7232 |
+| MLP               | 0.6869 | 0.6301 | 0.7522 | 0.7692 | 0.5877 | 0.6793 | 0.6916 |
+| ResNet1D          | 0.7077 | 0.6644 | 0.7654 | 0.7669 | 0.6369 | 0.6945 | 0.7173 |
+| LLaMA3.1-8B       | 0.6167 | 0.5229 | 0.6387 | 0.7452 | 0.4625 | 0.6013 | 0.6249 |
+| Qwen2.5-7B        | 0.6409 | 0.5852 | 0.6532 | 0.7593 | 0.5411 | 0.6182 | 0.6483 |
+| MDD-LLM 8B        | 0.7919 | 0.7642 | 0.8579 | 0.8039 | 0.7763 | 0.7524 | 0.8241 |
+| MDD-Thinker 7B    | 0.8268 | 0.8081 | 0.8803 | 0.8229 | 0.8291 | 0.7838 | 0.8614 |
+
+## Requirement
+The following Python packages and frameworks are required to run MDD-Thinker. Please follow the installation and environment setup instructions provided by **LlamaFactory** and **veRL** for proper configuration.
+
+| Framework / Package       | Version / Notes                                  | Purpose                                           |
+|---------------------------|-------------------------------------------------|-------------------------------------------------|
+| Python                    | >= 3.9                                          | Core programming language                        |
+| PyTorch                   | >= 2.0                                          | Deep learning backend                             |
+| Transformers              | >= 4.30                                         | LLM support for model loading and training       |
+| LlamaFactory              | see [LlamaFactory docs](#)            | Framework for supervised fine-tuning (SFT)      |
+| veRL                      | see [veRL docs](#)                   | Framework for reinforcement learning (RL)       |
+| numpy                     | >= 1.23                                         | Numerical computations                           |
+| pandas                    | >= 1.6                                          | Data manipulation                                |
+| scikit-learn              | >= 1.2                                          | Evaluation metrics and preprocessing             |
+| tqdm                      | >= 4.65                                         | Progress bars                                    |
+| matplotlib / seaborn       | latest                                          | Visualization of results                          |
+| datasets                  | >= 2.15                                         | Loading public NLP datasets                        |
+| sentencepiece             | latest                                          | Tokenization support for LLMs                     |
+
 ## Data Processing
 
 MDD-Thinker leverages two main sources of data:
