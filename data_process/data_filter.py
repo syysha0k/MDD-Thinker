@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from typing import List, Dict, Tuple
 import anthropic
+import openai
 import os
 from collections import Counter
 
@@ -318,8 +319,8 @@ Response:"""
                 dist_original = df_original[var].value_counts(normalize=True)
                 dist_filtered = df_filtered[var].value_counts(normalize=True)
 
-                print(f"  Original distribution:\n{dist_original}")
-                print(f"  Filtered distribution:\n{dist_filtered}")
+                print(f"Original distribution:\n{dist_original}")
+                print(f"Filtered distribution:\n{dist_filtered}")
 
                 assessment_results[var] = {
                     'type': 'categorical',
@@ -332,9 +333,9 @@ Response:"""
                                 if r['type'] == 'numeric' and r['substantial_shift']]
 
         if numeric_vars_shifted:
-            print(f"\n⚠️  Warning: Substantial shift detected in: {numeric_vars_shifted}")
+            print(f"Warning: Substantial shift detected in: {numeric_vars_shifted}")
         else:
-            print(f"\n✓ No substantial systematic bias detected")
+            print(f"No substantial systematic bias detected")
 
         return assessment_results
 
@@ -382,7 +383,7 @@ if __name__ == "__main__":
     # ukb_data = pd.read_csv("ukb_data.csv")
 
     # Run preprocessing
-    # Note: Need to set ANTHROPIC_API_KEY environment variable
+    # Note: Need to set ANTHROPIC_API_KEY or Other LLMs Keys environment variable
     preprocessor = MDDDataPreprocessor('ukb_data.csv')
 
     # Run full pipeline (process only 5 samples for demonstration to avoid excessive API calls)
