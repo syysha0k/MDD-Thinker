@@ -14,7 +14,7 @@ MDD-Thinker aims to provide a scalable and explainable solution for intelligent 
 
 ### Core Architecture
 
-![MDD-Thinker Architecture](path/to/placeholder-image.png)  
+![MDD-Thinker Architecture](imgs/arch.png)  
 *Figure: Core workflow of MDD-Thinker including data processing, SFT training, and RL fine-tuning.*
 
 ---
