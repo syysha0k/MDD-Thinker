@@ -13,7 +13,7 @@ MDD-Thinker aims to provide a scalable and explainable solution for intelligent 
 - Integration of multimodal clinical and psychological knowledge (text-based)
 
 ### Core Architecture
-<img src="imgs/arch.png" width="50%">  
+<img src="imgs/arch.png" width="60%">  
 *Figure: Core workflow of MDD-Thinker including data processing, SFT training, and RL fine-tuning.*
 
 ---
