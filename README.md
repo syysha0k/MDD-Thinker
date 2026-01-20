@@ -86,6 +86,9 @@ The **SFT stage** uses the **llamafactory** framework with the default configura
 
 SFT config files and training scripts can be found in [sft/](./sft) folder.
 
+### Training Steps
+- 
+
 ---
 
 ## Reinforcement Learning (RL) Stage
