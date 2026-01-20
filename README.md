@@ -145,4 +145,4 @@ Convert your MDD dataset into `.parquet` format.
 * Modify some key parameters in `run_qwen2_5_7b_grpo.sh`, such as the location of the data.
 
 5. Model Tranining
-`bash run_qwen2_5_7b_grpo.sh`
+* `bash run_qwen2_5_7b_grpo.sh`
