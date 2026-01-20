@@ -1,0 +1,19 @@
+python3 -m verl.trainer.main_ppo \
+    data.train_files=$TRAIN_DATA_PATH \
+    data.val_files=$VAL_DATA_PATH \
+    data.train_batch_size=256 \
+    data.max_prompt_length=512 \
+    data.max_response_length=512 \
+    actor_rollout_ref.model.path=$MODEL_PATH \
+    algorithm.adv_estimator=grpo \
+    algorithm.kl_ctrl.kl_coef=0.01 \
+    trainer.critic_warmup=0 \
+    trainer.n_gpus_per_node=8 \
+    trainer.nnodes=1 \
+    trainer.save_freq=10 \
+    rollout.n=8 \
+    rollout.temperature=0.9 \
+    reward_model.enable=False \
+    reward_model.strategy=manual \
+    reward_model.reward_manager='verl.workers.reward_manager.mdd_reward.MDDReasoningRewardManager' \
+    parameter_server.tensor_model_parallel_size=1
