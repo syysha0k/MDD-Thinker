@@ -14,6 +14,7 @@ MDD-Thinker aims to provide a scalable and explainable solution for intelligent 
 
 ### Core Architecture
 <img src="imgs/arch.png" width="60%">  
+
 *Figure: Core workflow of MDD-Thinker including data processing, SFT training, and RL fine-tuning.*
 
 ---
@@ -86,8 +87,23 @@ The **SFT stage** uses the **llamafactory** framework with the default configura
 
 SFT config files and training scripts can be found in [sft/](./sft) folder.
 
-### Training Steps
-- 
+#### SFT Training Steps
+1. Install LLaMA-Factory
+   ```
+   git clone https://github.com/hiyouga/LLaMA-Factory.git
+   cd LLaMA-Factory
+   pip install -r requirements.txt
+   ```
+2. Prepare Model and Data
+* Download the base model (e.g., Qwen2.5-7B) and note its local path.
+* Prepare the SFT dataset and register it in data/dataset_info.json.
+
+3. Place the YAML Configuration
+* Copy the prepared YAML file (`sft/sft_full.yaml`) into `LLaMA-Factory/examples/train_full/`.
+
+4. Model Training
+* Multi-GPU training
+   `FORCE_TORCHRUN=1 llamafactory-cli train examples/train_full/ukb_mental_full_sft.yaml`
 
 ---
 
@@ -104,6 +120,29 @@ The **RL stage** employs **veRL** framework to further refine reasoning ability:
 
 RL config files and training scripts are available in [rl/](./rl) folder.
 
----
+#### RL Training Steps
+1. Install veRL
+   ```
+   git clone https://github.com/volcengine/verl.git
+   cd verl
+   pip install -e .
+   ```
 
-## Repository Structure
+2. Modify Reward Function
+* move the `mdd_reward.py` to `verl/workers/reward_manager/` and update
+```
+reward_model:
+  strategy: manual
+  reward_manager: 'verl.workers.reward_manager.mdd_reward.MDDReasoningRewardManager'
+```
+
+3. Data Preparation
+Convert your MDD dataset into `.parquet` format.
+* Prompt: Include patient descriptions and formatting instructions (e.g., "Provide Reasoning and Diagnosis").
+* Label: The ground-truth diagnosis.
+
+4. Configuration Modification
+* Modify some key parameters in `run_qwen2_5_7b_grpo.sh`, such as the location of the data.
+
+5. Model Tranining
+`bash run_qwen2_5_7b_grpo.sh`
